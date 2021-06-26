@@ -3,6 +3,16 @@
 # (c) holds no legal value ;)
 snippet c)
 	Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` ${1:`g:snips_author`}. All Rights Reserved.
+snippet tencent
+	Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` Tencent Inc. All Rights Reserved.
+	Author:         abelpzhang@tencent.com (Zhang Peng)
+	Created:        `strftime("%a %d %b %Y %I:%M:%S %p %Z")`
+	Last Modified:  `strftime("%a %d %b %Y %I:%M:%S %p %Z")`
+snippet abelp
+	Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` Abel Personal. All Rights Reserved.
+	Author:         fylaotou@gmail.com (Zhang Peng)
+	Created:        `strftime("%a %d %b %Y %I:%M:%S %p %Z")`
+	Last Modified:  `strftime("%a %d %b %Y %I:%M:%S %p %Z")`
 snippet date
 	`strftime("%Y-%m-%d")`
 snippet ddate
