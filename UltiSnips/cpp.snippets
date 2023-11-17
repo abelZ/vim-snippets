@@ -66,6 +66,34 @@ namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
 }${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
 endsnippet
 
+snippet objclass "object class define"
+	int ${1:ClassName}::Open() {
+		opened_ = true;
+		return 0;
+	}
+
+	void $1::Close() {
+		opened_ = false;
+	}
+
+	bool $1::IsOpen() {
+		return opened_;
+	}
+
+	void $1::OnBeginSample(const std::vector<StreamFormat> &formats, void *sender) {
+	}
+
+	void $1::OnPushSample(MediaSamplePtr sample, void *sender) {
+	}
+
+	void $1::OnFlushSample(void *sender) {
+	}
+
+	std::vector<StreamFormat> $1::GetStreamFormats() {
+		return formats_;
+	}
+endsnippet
+
 snippet readfile "read file (readF)"
 std::vector<char> v;
 if (FILE *fp = fopen(${1:"filename"}, "r"))
