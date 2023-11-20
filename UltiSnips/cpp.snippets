@@ -67,6 +67,38 @@ namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
 endsnippet
 
 snippet objclass "object class define"
+	class ${1:ClassName} : public TransformObjectImpl, public ISampleReceiver {
+	public:
+		explicit $1(MetricsObserver *observer);
+		virtual ~$1();
+
+	public:
+		void StopSend();
+		void StartSend();
+
+	public:
+		int Open() override;
+		void Close() override;
+		bool IsOpen() override;
+		ISampleReader *GetSampleReader() override { return &sample_reader_; }
+		ISampleReceiver *GetSampleReceiver() override { return this; }
+
+	public:
+		void OnBeginSample(const std::vector<StreamFormat> &formats, void *sender) override;
+		void OnPushSample(MediaSamplePtr sample, void *sender) override;
+		void OnFlushSample(void *sender) override;
+		std::vector<StreamFormat> GetStreamFormats() override;
+
+	private:
+		SampleReaderImpl<$1> sample_reader_{this};
+		bool opened_{false};
+		std::vector<StreamFormat> formats_;
+		std::map<std::string, std::string> tags_;
+		MetricsObserver *mobserver_{nullptr};
+	};
+endsnippet
+
+snippet objimpl "object class implement"
 	int ${1:ClassName}::Open() {
 		opened_ = true;
 		return 0;
