@@ -2,7 +2,8 @@
 
 # (c) holds no legal value ;)
 snippet copyright
-	Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` ${1:`g:snips_author`}. All Rights Reserved.
+	// Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` ${1:`g:snips_author`}. All Rights Reserved.
+	// Author: ${2:`g:snips_author`}
 snippet author
 	Author:         ${1:`g:snips_author`}
 	Created:        `strftime("%a %d %b %Y %I:%M:%S %p %Z")`
